@@ -15,7 +15,6 @@
       ]),
     });
 
-
     onSubmit() {
       if (this.bioSection.valid) {
         let date = new Date;

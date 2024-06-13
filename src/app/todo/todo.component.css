@@ -30,3 +30,6 @@ table {
 .edit:hover{
     text-decoration: underline;
 }
+.text-danger{
+    color: red;
+}

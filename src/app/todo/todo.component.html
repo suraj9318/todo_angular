@@ -2,7 +2,7 @@
     <label for="">Enter your todo : </label>
     <div class="">
         <input type="text" [formControl]="bioSection.controls.todo" >
-    <div *ngIf="bioSection.controls.todo.errors?.['required']  && bioSection.controls.todo.touched">Name is required.</div>
+    <div class="text-danger" *ngIf="bioSection.controls.todo.errors?.['required']  && bioSection.controls.todo.touched">this field is required !!</div>
     </div>
     
     <div *ngIf="editId;else other_content">
