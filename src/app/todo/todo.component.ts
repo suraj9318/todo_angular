@@ -50,7 +50,6 @@
     }
     
     editData(){
-      debugger
       let index = this.todoList.findIndex((item:any)=>item.id === this.editId);
       if(index !== -1){
         let obj = this.todoList[index];
