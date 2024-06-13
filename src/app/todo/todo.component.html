@@ -1,0 +1,38 @@
+<form [formGroup]="bioSection">
+    <label for="">Enter your todo : </label>
+    <div class="">
+        <input type="text" [formControl]="bioSection.controls.todo" >
+    <div *ngIf="bioSection.controls.todo.errors?.['required']  && bioSection.controls.todo.touched">Name is required.</div>
+    </div>
+    
+    <div *ngIf="editId;else other_content">
+        <button type="submit" [disabled]="!bioSection.valid" (click)="editData()">Edit</button>
+        </div>
+        
+    <ng-template #other_content>
+        <button type="submit" [disabled]="!bioSection.valid" (click)="onSubmit()">Submit</button>
+    </ng-template>
+
+</form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>S.N.</th>
+            <th>Todo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of todoList; let i = index">
+            <td>{{ i + 1 }}</td> 
+            <td>{{ item.todo }}</td>
+            <td>
+                <span class="delete" (click)="delete(item.id)">Delete</span>
+                <span class="edit" (click)="edit(item.id)">Edit</span>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
