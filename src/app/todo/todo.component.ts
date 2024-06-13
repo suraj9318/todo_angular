@@ -43,6 +43,7 @@
     edit(id:any){
       let index = this.todoList.findIndex((item:any)=>item.id === id)
       if(index !== -1){
+        debugger
         let obj = this.todoList[index]
         this.bioSection.controls.todo.setValue(obj.todo);
         this.editId = obj.id
@@ -50,7 +51,8 @@
     }
     
     editData(){
-      let index = this.todoList.findIndex((item:any)=>item.id = this.editId);
+      debugger
+      let index = this.todoList.findIndex((item:any)=>item.id === this.editId);
       if(index !== -1){
         let obj = this.todoList[index];
         obj.todo = this.bioSection.controls.todo.value;
