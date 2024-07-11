@@ -1,17 +1,20 @@
-<form [formGroup]="bioSection">
-    <label for="">Enter your todo : </label>
-    <div class="">
-        <input type="text" [formControl]="bioSection.controls.todo" >
-    <div class="text-danger" *ngIf="bioSection.controls.todo.errors?.['required']  && bioSection.controls.todo.touched">this field is required !!</div>
+<form [formGroup]="bioSection" class="d-flex justify-content-center mt-3 align-items-center">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="form-label" class="">Enter your todo : </label>
+            <input class="form-control" type="text" [formControl]="bioSection.controls.todo" >
+            <div class="text-danger" *ngIf="bioSection.controls.todo.errors?.['required']  && bioSection.controls.todo.touched">this field is required !!</div>
+        </div>
+
+        <div *ngIf="editId;else other_content">
+            <button type="submit"  class="mt-2 btn btn-primary  " [disabled]="!bioSection.valid" (click)="editData()">Edit</button>
+        </div>
+            
+        <ng-template #other_content>
+            <button type="submit" class="mt-2 btn btn-success" [disabled]="!bioSection.valid" (click)="onSubmit()">Submit</button>
+        </ng-template>
     </div>
     
-    <div *ngIf="editId;else other_content">
-        <button type="submit" [disabled]="!bioSection.valid" (click)="editData()">Edit</button>
-        </div>
-        
-    <ng-template #other_content>
-        <button type="submit" [disabled]="!bioSection.valid" (click)="onSubmit()">Submit</button>
-    </ng-template>
 
 </form>
 
@@ -29,8 +32,8 @@
             <td>{{ i + 1 }}</td> 
             <td>{{ item.todo }}</td>
             <td>
-                <span class="delete" (click)="delete(item.id)">Delete</span>
-                <span class="edit" (click)="edit(item.id)">Edit</span>
+                <span class="delete" (click)="delete(item.id)"><i class="bi bi-archive-fill"></i></span>
+                <span class="edit" (click)="edit(item.id)"><i class="bi bi-pencil"></i></span>
 
             </td>
         </tr>
